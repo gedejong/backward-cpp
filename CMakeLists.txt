@@ -90,7 +90,9 @@ if(BACKWARD_HAS_EXTERNAL_LIBRARIES)
     set_target_properties(backward PROPERTIES
                                    INTERFACE_LINK_LIBRARIES "${BACKWARD_LIBRARIES}")
 endif()
-add_library(Backward::Backward ALIAS backward)
+if(NOT TARGET Backward::Backward)
+    add_library(Backward::Backward ALIAS backward)
+endif()
 
 ###############################################################################
 # TESTS
